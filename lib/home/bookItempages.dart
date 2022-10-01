@@ -2,6 +2,7 @@ import 'package:booksellapp/utils/appcolor.dart';
 import 'package:booksellapp/widgets/MainText.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/iconandtext.dart';
 import '../widgets/small_text.dart';
 
 class BookItemsPages extends StatefulWidget {
@@ -50,7 +51,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: 140,
+            height: 120,
             margin: const EdgeInsets.only(
               left: 30,
               right: 30,
@@ -58,16 +59,16 @@ class _BookItemsPagesState extends State<BookItemsPages> {
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Color(0xff1e2023),
+              color: const Color(0xff1e2023),
             ),
             child: Container(
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MainTexts(displayText: 'displayText'),
+                  MainTexts(displayText: 'Display Text'),
                   const SizedBox(
-                    height: 10,
+                    height: 15,
                   ),
                   Row(
                     children: [
@@ -81,16 +82,64 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                                 )),
                       ),
                       const SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       Opacity(
                         opacity: 0.5,
                         child: SmallText(
-                          displayText: 'Sample Text',
+                          displayText: '4.5',
                           color: Colors.grey,
                           size: 12,
                         ),
-                      )
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Opacity(
+                        opacity: 0.5,
+                        child: SmallText(
+                          displayText: '1234',
+                          color: Colors.grey,
+                          size: 12,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Opacity(
+                        opacity: 0.5,
+                        child: SmallText(
+                          displayText: 'Comments',
+                          color: Colors.grey,
+                          size: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      IconAndTextWidget(
+                        text: 'Normal',
+                        color: AppColor.smallTextColor,
+                        icon: Icons.circle,
+                        iconColor: AppColor.mainIconBgColor,
+                      ),
+                      IconAndTextWidget(
+                        text: '1.5km',
+                        color: AppColor.smallTextColor,
+                        icon: Icons.location_pin,
+                        iconColor: AppColor.mainIconBgColor,
+                      ),
+                      IconAndTextWidget(
+                        text: 'Normal',
+                        color: AppColor.smallTextColor,
+                        icon: Icons.location_city,
+                        iconColor: AppColor.mainIconBgColor,
+                      ),
                     ],
                   ),
                 ],
