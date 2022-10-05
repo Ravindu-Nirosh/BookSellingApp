@@ -3,6 +3,7 @@ import 'package:booksellapp/widgets/MainText.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/dimentions.dart';
 import '../widgets/iconandtext.dart';
 import '../widgets/small_text.dart';
 
@@ -40,7 +41,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
     return Column(
       children: [
         Container(
-          height: 300,
+          height: Dimentions.pageCardContainer,
           child: PageView.builder(
             controller: pageController,
             itemCount: 5,
@@ -93,13 +94,15 @@ class _BookItemsPagesState extends State<BookItemsPages> {
       matrix = Matrix4.diagonal3Values(1, curScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
     }
+    print(737.4545454545455 / 15);
+    print("Height  " + MediaQuery.of(context).size.height.toString());
 
     return Transform(
       transform: matrix,
       child: Stack(
         children: [
           Container(
-            height: 220,
+            height: Dimentions.scrollPageImageContainer,
             margin: const EdgeInsets.only(
               left: 5,
               right: 5,
@@ -118,7 +121,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: 120,
+              height: Dimentions.scrollPageInfoContainer,
               margin: const EdgeInsets.only(
                 left: 30,
                 right: 30,
@@ -141,8 +144,8 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     MainTexts(displayText: 'Display Text'),
-                    const SizedBox(
-                      height: 15,
+                    SizedBox(
+                      height: Dimentions.sizeBoxed15,
                     ),
                     Row(
                       children: [
@@ -190,8 +193,8 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      height: 15,
+                    SizedBox(
+                      height: Dimentions.sizeBoxed15,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
