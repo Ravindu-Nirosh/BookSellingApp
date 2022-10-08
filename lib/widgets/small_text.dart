@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SmallText extends StatelessWidget {
   Color? color;
+  double opacityValue;
   final String displayText;
   double? size;
   SmallText({
     Key? key,
+    this.opacityValue = 0.5,
     this.color = const Color(0xFF89dad0),
     required this.displayText,
     this.size = 15.0,
@@ -14,10 +16,13 @@ class SmallText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(displayText,
-        style: GoogleFonts.roboto(
-          color: color,
-          fontSize: size,
-        ));
+    return Opacity(
+      opacity: opacityValue,
+      child: Text(displayText,
+          style: GoogleFonts.roboto(
+            color: color,
+            fontSize: size,
+          )),
+    );
   }
 }

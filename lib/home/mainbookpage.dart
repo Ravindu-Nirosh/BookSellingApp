@@ -58,7 +58,10 @@ class _MainBookPageState extends State<MainBookPage> {
               ),
             ),
           ),
-          BookItemsPages(),
+          const Expanded(
+              child: SingleChildScrollView(
+            child: BookItemsPages(),
+          ))
         ],
       ),
     );

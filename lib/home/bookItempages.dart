@@ -50,8 +50,8 @@ class _BookItemsPagesState extends State<BookItemsPages> {
             },
           ),
         ),
-        SizedBox(
-          height: 5,
+        const SizedBox(
+          height: 10,
         ),
         DotsIndicator(
           dotsCount: 5,
@@ -65,6 +65,110 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                 borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
+        SizedBox(
+          height: 30,
+        ),
+        //Popular text
+        Container(
+          margin: EdgeInsets.only(left: 30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              MainTexts(
+                displayText: 'Populer',
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              SmallText(
+                displayText: 'Food Selction',
+                color: Colors.grey,
+                size: 13,
+              ),
+            ],
+          ),
+        ),
+        //Food Item List
+        ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: 5,
+            itemBuilder: (
+              context,
+              index,
+            ) {
+              return Container(
+                margin: EdgeInsets.only(left: 30, right: 30),
+                child: Row(
+                  children: [
+                    //Image Section
+                    Container(
+                      margin: EdgeInsets.only(top: 5, bottom: 5),
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(30),
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("assets/images/cardImage1.jpg"),
+                        ),
+                      ),
+                    ),
+                    //Text And Icon Section
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.only(left: 10, top: 5),
+                        height: 100,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            MainTexts(
+                              displayText: 'Nutritions Frout Meal Hellow',
+                              overFlow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            SmallText(
+                              displayText: 'Food Description',
+                              opacityValue: 0.5,
+                              color: Colors.grey,
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconAndTextWidget(
+                                  text: 'Normal',
+                                  color: AppColor.smallTextColor,
+                                  icon: Icons.circle,
+                                  iconColor: AppColor.iconColor1,
+                                ),
+                                IconAndTextWidget(
+                                  text: 'Normal',
+                                  color: AppColor.smallTextColor,
+                                  icon: Icons.location_pin,
+                                  iconColor: AppColor.iconColor2,
+                                ),
+                                IconAndTextWidget(
+                                  text: 'Normal',
+                                  color: AppColor.smallTextColor,
+                                  icon: Icons.location_city,
+                                  iconColor: AppColor.iconColor1,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }),
       ],
     );
   }
@@ -94,8 +198,8 @@ class _BookItemsPagesState extends State<BookItemsPages> {
       matrix = Matrix4.diagonal3Values(1, curScale, 1)
         ..setTranslationRaw(0, currTrans, 0);
     }
-    print(737.4545454545455 / 15);
-    print("Height  " + MediaQuery.of(context).size.height.toString());
+    print(737.4545454545455 / 20);
+    print("Height 2 " + Dimentions.screenHeight.toString());
 
     return Transform(
       transform: matrix,
@@ -108,7 +212,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
               right: 5,
             ),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: BorderRadius.circular(Dimentions.radius30),
               color: index.isEven
                   ? const Color(0xFF69c5df)
                   : const Color(0xff9294cc),
@@ -128,7 +232,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                 bottom: 10,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(Dimentions.radius20),
                 color: const Color(0xff1e2023),
                 boxShadow: const [
                   BoxShadow(
