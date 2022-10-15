@@ -1,7 +1,8 @@
+import 'package:booksellapp/utils/dimentions.dart';
 import 'package:booksellapp/widgets/MainText.dart';
 import 'package:booksellapp/widgets/small_text.dart';
 import 'package:flutter/material.dart';
-import '../utils/appcolor.dart';
+import '/../utils/appcolor.dart';
 import 'bookItempages.dart';
 
 class MainBookPage extends StatefulWidget {
@@ -19,8 +20,10 @@ class _MainBookPageState extends State<MainBookPage> {
         children: [
           Container(
             child: Container(
-              margin: const EdgeInsets.only(top: 30.0, bottom: 10),
-              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              margin: EdgeInsets.only(
+                  top: Dimentions.height30, bottom: Dimentions.height10),
+              padding: EdgeInsets.only(
+                  left: Dimentions.width20, right: Dimentions.width20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -46,7 +49,8 @@ class _MainBookPageState extends State<MainBookPage> {
                       width: 45,
                       height: 45,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius:
+                            BorderRadius.circular(Dimentions.radius15),
                         color: AppColor.mainIconBgColor,
                       ),
                       child: const Icon(

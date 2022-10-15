@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SmallText extends StatelessWidget {
   Color? color;
+  double lineHeight;
   double opacityValue;
   final String displayText;
   double? size;
@@ -12,6 +13,7 @@ class SmallText extends StatelessWidget {
     this.color = const Color(0xFF89dad0),
     required this.displayText,
     this.size = 15.0,
+    this.lineHeight = 1.5,
   }) : super(key: key);
 
   @override
@@ -22,6 +24,7 @@ class SmallText extends StatelessWidget {
           style: GoogleFonts.roboto(
             color: color,
             fontSize: size,
+            height: lineHeight,
           )),
     );
   }

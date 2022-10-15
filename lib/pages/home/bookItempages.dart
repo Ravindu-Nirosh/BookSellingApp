@@ -3,9 +3,10 @@ import 'package:booksellapp/widgets/MainText.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/dimentions.dart';
-import '../widgets/iconandtext.dart';
-import '../widgets/small_text.dart';
+import '../../widgets/app_icon_text_rating_column.dart';
+import '/../utils/dimentions.dart';
+import '/../widgets/iconandtext.dart';
+import '/../widgets/small_text.dart';
 
 class BookItemsPages extends StatefulWidget {
   const BookItemsPages({Key? key}) : super(key: key);
@@ -50,8 +51,8 @@ class _BookItemsPagesState extends State<BookItemsPages> {
             },
           ),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: Dimentions.height10,
         ),
         DotsIndicator(
           dotsCount: 5,
@@ -66,11 +67,11 @@ class _BookItemsPagesState extends State<BookItemsPages> {
           ),
         ),
         SizedBox(
-          height: 30,
+          height: Dimentions.height30,
         ),
         //Popular text
         Container(
-          margin: EdgeInsets.only(left: 30),
+          margin: EdgeInsets.only(left: Dimentions.width30),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
@@ -78,7 +79,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                 displayText: 'Populer',
               ),
               SizedBox(
-                width: 20,
+                width: Dimentions.width20,
               ),
               SmallText(
                 displayText: 'Food Selction',
@@ -98,49 +99,55 @@ class _BookItemsPagesState extends State<BookItemsPages> {
               index,
             ) {
               return Container(
-                margin: EdgeInsets.only(left: 30, right: 30),
+                margin: EdgeInsets.only(
+                    left: Dimentions.width30, right: Dimentions.width30),
                 child: Row(
                   children: [
                     //Image Section
                     Container(
-                      margin: EdgeInsets.only(top: 5, bottom: 5),
-                      width: 120,
-                      height: 120,
+                      margin: EdgeInsets.only(
+                          top: Dimentions.height5, bottom: Dimentions.height5),
+                      width: Dimentions.width120,
+                      height: Dimentions.height120,
                       decoration: BoxDecoration(
                         color: Colors.blue,
-                        borderRadius: BorderRadius.circular(30),
+                        borderRadius:
+                            BorderRadius.circular(Dimentions.radius30),
                         image: const DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage("assets/images/cardImage1.jpg"),
+                          image: AssetImage("assets/images/book2.jpg"),
                         ),
                       ),
                     ),
                     //Text And Icon Section
                     Expanded(
                       child: Container(
-                        padding: EdgeInsets.only(left: 10, top: 5),
-                        height: 100,
+                        padding: EdgeInsets.only(
+                            left: Dimentions.width20, top: Dimentions.height5),
+                        height: Dimentions.height100,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             MainTexts(
                               displayText: 'Nutritions Frout Meal Hellow',
                               overFlow: TextOverflow.ellipsis,
+                              size: Dimentions.font20,
                             ),
                             SizedBox(
-                              height: 15,
+                              height: Dimentions.height10,
                             ),
                             SmallText(
                               displayText: 'Food Description',
                               opacityValue: 0.5,
                               color: Colors.grey,
+                              size: Dimentions.font15,
                             ),
                             SizedBox(
-                              height: 15,
+                              height: Dimentions.height15,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
+                              children: const [
                                 IconAndTextWidget(
                                   text: 'Normal',
                                   color: AppColor.smallTextColor,
@@ -207,9 +214,9 @@ class _BookItemsPagesState extends State<BookItemsPages> {
         children: [
           Container(
             height: Dimentions.scrollPageImageContainer,
-            margin: const EdgeInsets.only(
-              left: 5,
-              right: 5,
+            margin: EdgeInsets.only(
+              left: Dimentions.width5,
+              right: Dimentions.width5,
             ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimentions.radius30),
@@ -218,7 +225,7 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                   : const Color(0xff9294cc),
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage("assets/images/cardImage1.jpg"),
+                image: AssetImage("assets/images/book2.jpg"),
               ),
             ),
           ),
@@ -226,10 +233,10 @@ class _BookItemsPagesState extends State<BookItemsPages> {
             alignment: Alignment.bottomCenter,
             child: Container(
               height: Dimentions.scrollPageInfoContainer,
-              margin: const EdgeInsets.only(
-                left: 30,
-                right: 30,
-                bottom: 10,
+              margin: EdgeInsets.only(
+                left: Dimentions.width30,
+                right: Dimentions.width30,
+                bottom: Dimentions.height10,
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(Dimentions.radius20),
@@ -243,87 +250,9 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                 ],
               ),
               child: Container(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MainTexts(displayText: 'Display Text'),
-                    SizedBox(
-                      height: Dimentions.sizeBoxed15,
-                    ),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                              5,
-                              (index) => const Icon(
-                                    Icons.star,
-                                    size: 15,
-                                    color: AppColor.mainIconBgColor,
-                                  )),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Opacity(
-                          opacity: 0.5,
-                          child: SmallText(
-                            displayText: '4.5',
-                            color: Colors.grey,
-                            size: 12,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Opacity(
-                          opacity: 0.5,
-                          child: SmallText(
-                            displayText: '1234',
-                            color: Colors.grey,
-                            size: 12,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Opacity(
-                          opacity: 0.5,
-                          child: SmallText(
-                            displayText: 'Comments',
-                            color: Colors.grey,
-                            size: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: Dimentions.sizeBoxed15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        IconAndTextWidget(
-                          text: 'Normal',
-                          color: AppColor.smallTextColor,
-                          icon: Icons.circle,
-                          iconColor: AppColor.iconColor1,
-                        ),
-                        IconAndTextWidget(
-                          text: '1.5km',
-                          color: AppColor.smallTextColor,
-                          icon: Icons.location_pin,
-                          iconColor: AppColor.iconColor2,
-                        ),
-                        IconAndTextWidget(
-                          text: 'Normal',
-                          color: AppColor.smallTextColor,
-                          icon: Icons.location_city,
-                          iconColor: AppColor.iconColor3,
-                        ),
-                      ],
-                    ),
-                  ],
+                padding: EdgeInsets.all(Dimentions.height15),
+                child: AppColumn(
+                  text: 'Biriyani',
                 ),
               ),
             ),

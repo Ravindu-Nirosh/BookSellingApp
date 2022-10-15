@@ -1,6 +1,7 @@
+import 'package:booksellapp/pages/books/populer_books.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home/mainbookpage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-      home: const MainBookPage(),
+      home: const PopulerBookPages(),
     );
   }
 }
