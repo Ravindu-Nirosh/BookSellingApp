@@ -1,4 +1,5 @@
 import 'package:booksellapp/widgets/MainText.dart';
+import 'package:booksellapp/widgets/expandable_text_widget.dart';
 import 'package:booksellapp/widgets/pageicons.dart';
 import 'package:flutter/material.dart';
 import '../../utils/dimentions.dart';
@@ -74,15 +75,13 @@ class PopulerBookPages extends StatelessWidget {
                   SizedBox(
                     height: Dimentions.height20,
                   ),
-                  RichText(
-                    text: const TextSpan(
-                        style: TextStyle(
-                          height: 1.3,
-                          color: Colors.white12,
-                        ),
+                  const Expanded(
+                    child: SingleChildScrollView(
+                      child: ExpandableText(
                         text:
-                            '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,''',
-                        children: [TextSpan(text: 'See More ')]),
+                            '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.''',
+                      ),
+                    ),
                   )
                 ],
               ),
@@ -91,13 +90,17 @@ class PopulerBookPages extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        padding: EdgeInsets.all(Dimentions.height30),
-        height: Dimentions.height120,
+        padding: EdgeInsets.only(
+          top: Dimentions.height15,
+          left: Dimentions.width20,
+          right: Dimentions.width20,
+        ),
+        height: Dimentions.height100,
         decoration: BoxDecoration(
           color: Colors.black54,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Dimentions.height30 * 2),
-            topRight: Radius.circular(Dimentions.height30 * 2),
+            topLeft: Radius.circular(Dimentions.height30 * 1.3),
+            topRight: Radius.circular(Dimentions.height30 * 1.3),
           ),
         ),
         child: Row(
@@ -119,6 +122,7 @@ class PopulerBookPages extends StatelessWidget {
                   MainTexts(
                     displayText: '0',
                     size: Dimentions.width30,
+                    color: Colors.white54,
                   ),
                   SizedBox(
                     width: Dimentions.width10,
@@ -138,8 +142,14 @@ class PopulerBookPages extends StatelessWidget {
               height: Dimentions.height70,
               child: Row(
                 children: [
-                  MainTexts(displayText: '\$0.8 '),
-                  MainTexts(displayText: 'Add To Cart'),
+                  MainTexts(
+                    displayText: '\$0.8 ',
+                    color: Colors.white54,
+                  ),
+                  MainTexts(
+                    displayText: 'Add To Cart',
+                    color: Colors.white54,
+                  ),
                 ],
               ),
             )
