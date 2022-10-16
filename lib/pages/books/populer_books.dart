@@ -91,7 +91,7 @@ class PopulerBookPages extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         padding: EdgeInsets.only(
-          top: Dimentions.height15,
+          top: Dimentions.height5,
           left: Dimentions.width20,
           right: Dimentions.width20,
         ),
@@ -121,7 +121,7 @@ class PopulerBookPages extends StatelessWidget {
                   ),
                   MainTexts(
                     displayText: '0',
-                    size: Dimentions.width30,
+                    size: Dimentions.height20,
                     color: Colors.white54,
                   ),
                   SizedBox(
@@ -145,10 +145,12 @@ class PopulerBookPages extends StatelessWidget {
                   MainTexts(
                     displayText: '\$0.8 ',
                     color: Colors.white54,
+                    size: Dimentions.height20,
                   ),
                   MainTexts(
                     displayText: 'Add To Cart',
                     color: Colors.white54,
+                    size: Dimentions.height20,
                   ),
                 ],
               ),

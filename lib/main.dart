@@ -1,4 +1,5 @@
 import 'package:booksellapp/pages/books/populer_books.dart';
+import 'package:booksellapp/pages/books/recomended_books_details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-      home: const PopulerBookPages(),
+      home: const RecomendedBooks(),
     );
   }
 }
