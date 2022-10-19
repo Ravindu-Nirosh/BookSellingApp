@@ -3,8 +3,13 @@ import 'package:booksellapp/pages/books/recomended_books_details.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:booksellapp/Helper/dependencies.dart' as depnd;
 
-void main() {
+import 'controllers/populer_product_controller.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await depnd.init();
   runApp(const MyApp());
 }
 
@@ -14,6 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.find<PopulerProductController>().getPopulerProductList();
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

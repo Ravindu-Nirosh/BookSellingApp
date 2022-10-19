@@ -78,12 +78,9 @@ class RecomendedBooks extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(Dimentions.radius30),
-              topLeft: Radius.circular(Dimentions.radius30)),
           color: Colors.black54,
         ),
-        height: 170,
+        height: 160,
         child: Column(
           children: [
             Container(
