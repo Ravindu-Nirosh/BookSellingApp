@@ -1,15 +1,24 @@
+import 'package:booksellapp/pages/home/mainbookpage.dart';
+import 'package:booksellapp/utils/app_const.dart';
 import 'package:booksellapp/widgets/MainText.dart';
 import 'package:booksellapp/widgets/expandable_text_widget.dart';
 import 'package:booksellapp/widgets/pageicons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../controllers/populer_product_controller.dart';
 import '../../utils/dimentions.dart';
 import '../../widgets/app_icon_text_rating_column.dart';
 
 class PopulerBookPages extends StatelessWidget {
-  const PopulerBookPages({Key? key}) : super(key: key);
+  int pageId;
+  PopulerBookPages({Key? key, required this.pageId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopulerProductController>().populerProductList[pageId];
+    print(pageId.toString());
+    print(product.name);
     return Scaffold(
       backgroundColor: const Color(0xff1e2023),
       body: Stack(
@@ -21,10 +30,13 @@ class PopulerBookPages extends StatelessWidget {
             child: Container(
               width: double.maxFinite,
               height: Dimentions.height350,
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/book2.jpg"))),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      AppConst.baseUrl + AppConst.UPLOAD_URL + product.img!),
+                ),
+              ),
             ),
           ),
           //page Icons front back button
@@ -35,9 +47,14 @@ class PopulerBookPages extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  PageIcons(
-                    icon: Icons.arrow_back,
-                    backgroundColor: Color(0xff000000),
+                  GestureDetector(
+                    onTap: (() => {
+                          Get.to(() => MainBookPage()),
+                        }),
+                    child: PageIcons(
+                      icon: Icons.arrow_back,
+                      backgroundColor: Color(0xff000000),
+                    ),
                   ),
                   PageIcons(
                     icon: Icons.shopping_cart,
@@ -64,7 +81,7 @@ class PopulerBookPages extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppColumn(text: 'Biriyani'),
+                  AppColumn(text: product.name),
                   SizedBox(
                     height: Dimentions.height20,
                   ),
@@ -75,12 +92,9 @@ class PopulerBookPages extends StatelessWidget {
                   SizedBox(
                     height: Dimentions.height20,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: SingleChildScrollView(
-                      child: ExpandableText(
-                        text:
-                            '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.''',
-                      ),
+                      child: ExpandableText(text: product.description),
                     ),
                   )
                 ],
@@ -143,7 +157,7 @@ class PopulerBookPages extends StatelessWidget {
               child: Row(
                 children: [
                   MainTexts(
-                    displayText: '\$0.8 ',
+                    displayText: '\$ ${product.price} ',
                     color: Colors.white54,
                     size: Dimentions.height20,
                   ),
