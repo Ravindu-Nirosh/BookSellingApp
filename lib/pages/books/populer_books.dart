@@ -17,8 +17,7 @@ class PopulerBookPages extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<PopulerProductController>().populerProductList[pageId];
-    print(pageId.toString());
-    print(product.name);
+    Get.find<PopulerProductController>().initPopulerProduct();
     return Scaffold(
       backgroundColor: const Color(0xff1e2023),
       body: Stack(
@@ -103,74 +102,88 @@ class PopulerBookPages extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
-          top: Dimentions.height5,
-          left: Dimentions.width20,
-          right: Dimentions.width20,
-        ),
-        height: Dimentions.height100,
-        decoration: BoxDecoration(
-          color: Colors.black54,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Dimentions.height30 * 1.3),
-            topRight: Radius.circular(Dimentions.height30 * 1.3),
-          ),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff1e2023),
-                borderRadius: BorderRadius.circular(Dimentions.radius15),
-              ),
-              height: Dimentions.height70,
-              padding: EdgeInsets.all(Dimentions.width10),
-              child: Row(
-                children: [
-                  Icon(Icons.remove),
-                  SizedBox(
-                    width: Dimentions.width10,
-                  ),
-                  MainTexts(
-                    displayText: '0',
-                    size: Dimentions.height20,
-                    color: Colors.white54,
-                  ),
-                  SizedBox(
-                    width: Dimentions.width10,
-                  ),
-                  Icon(
-                    Icons.add,
-                  )
-                ],
+      bottomNavigationBar: GetBuilder<PopulerProductController>(
+        builder: (populerProduct) {
+          return Container(
+            padding: EdgeInsets.only(
+              top: Dimentions.height5,
+              left: Dimentions.width20,
+              right: Dimentions.width20,
+            ),
+            height: Dimentions.height100,
+            decoration: BoxDecoration(
+              color: Colors.black54,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Dimentions.height30 * 1.3),
+                topRight: Radius.circular(Dimentions.height30 * 1.3),
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff1e2953),
-                borderRadius: BorderRadius.circular(Dimentions.radius15),
-              ),
-              padding: EdgeInsets.all(Dimentions.height20),
-              height: Dimentions.height70,
-              child: Row(
-                children: [
-                  MainTexts(
-                    displayText: '\$ ${product.price} ',
-                    color: Colors.white54,
-                    size: Dimentions.height20,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff1e2023),
+                    borderRadius: BorderRadius.circular(Dimentions.radius15),
                   ),
-                  MainTexts(
-                    displayText: 'Add To Cart',
-                    color: Colors.white54,
-                    size: Dimentions.height20,
+                  height: Dimentions.height70,
+                  padding: EdgeInsets.all(Dimentions.width10),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                          onTap: () {
+                            populerProduct.setIncrements(false);
+                          },
+                          child: Icon(Icons.remove)),
+                      SizedBox(
+                        width: Dimentions.width10,
+                      ),
+                      MainTexts(
+                        displayText: populerProduct.count.toString(),
+                        size: Dimentions.height20,
+                        color: Colors.white54,
+                      ),
+                      SizedBox(
+                        width: Dimentions.width10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          populerProduct.setIncrements(true);
+                        },
+                        child: Icon(
+                          Icons.add,
+                        ),
+                      )
+                    ],
                   ),
-                ],
-              ),
-            )
-          ],
-        ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff1e2953),
+                    borderRadius: BorderRadius.circular(Dimentions.radius15),
+                  ),
+                  padding: EdgeInsets.all(Dimentions.height20),
+                  height: Dimentions.height70,
+                  child: Row(
+                    children: [
+                      MainTexts(
+                        displayText:
+                            '\$ ${product.price * populerProduct.count} ',
+                        color: Colors.white54,
+                        size: Dimentions.height20,
+                      ),
+                      MainTexts(
+                        displayText: 'Add To Cart',
+                        color: Colors.white54,
+                        size: Dimentions.height20,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        },
       ),
     );
   }

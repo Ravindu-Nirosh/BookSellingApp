@@ -17,7 +17,7 @@ class RecomendedBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     var product =
         Get.find<RecommendedProductController>().recomendProductList[Pageid];
-    print(product.name);
+    Get.find<RecommendedProductController>().initRecomendProduct();
     return Scaffold(
       backgroundColor: const Color(0xff1e2023),
       body: CustomScrollView(
@@ -89,86 +89,98 @@ class RecomendedBooks extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: Colors.black54,
-        ),
-        height: 160,
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  PageIcons(
-                    icon: Icons.remove,
-                    backgroundColor: Colors.black54,
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: MainTexts(
-                        displayText: '\$ ${product.price} X 2',
-                        color: Colors.white54,
-                      )),
-                  PageIcons(
-                    icon: Icons.add,
-                    backgroundColor: Colors.black54,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(
-                top: Dimentions.height5,
-                left: Dimentions.width50,
-                right: Dimentions.width50,
-              ),
-              height: Dimentions.height100,
-              decoration: BoxDecoration(
-                color: Colors.black12,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff1e2023),
-                      borderRadius: BorderRadius.circular(Dimentions.radius15),
+      bottomNavigationBar:
+          GetBuilder<RecommendedProductController>(builder: (recomendproduct) {
+        return Container(
+          decoration: BoxDecoration(
+            color: Colors.black54,
+          ),
+          height: 160,
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        recomendproduct.setQty(false);
+                      },
+                      child: PageIcons(
+                        icon: Icons.remove,
+                        backgroundColor: Colors.black54,
+                      ),
                     ),
-                    padding: EdgeInsets.all(Dimentions.height10),
-                    child: Icon(
-                      Icons.favorite,
-                      color: Colors.redAccent,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: const Color(0xff1e2953),
-                      borderRadius: BorderRadius.circular(Dimentions.radius15),
-                    ),
-                    padding: EdgeInsets.all(Dimentions.height10),
-                    child: Row(
-                      children: [
-                        MainTexts(
-                          displayText: '\$0.8 ',
+                    Container(
+                        padding: EdgeInsets.only(left: 10, right: 10),
+                        child: MainTexts(
+                          displayText:
+                              '\$ ${product.price} X ${recomendproduct.qty}',
                           color: Colors.white54,
-                          size: Dimentions.height20,
-                        ),
-                        MainTexts(
-                          displayText: 'Add To Cart',
-                          color: Colors.white54,
-                          size: Dimentions.height20,
-                        ),
-                      ],
+                        )),
+                    GestureDetector(
+                      onTap: () {
+                        recomendproduct.setQty(true);
+                      },
+                      child: PageIcons(
+                        icon: Icons.add,
+                        backgroundColor: Colors.black54,
+                      ),
                     ),
-                  )
-                ],
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
-      ),
+              Container(
+                padding: EdgeInsets.only(
+                  top: Dimentions.height5,
+                  left: Dimentions.width50,
+                  right: Dimentions.width50,
+                ),
+                height: Dimentions.height100,
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff1e2023),
+                        borderRadius:
+                            BorderRadius.circular(Dimentions.radius15),
+                      ),
+                      padding: EdgeInsets.all(Dimentions.height10),
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.redAccent,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xff1e2953),
+                        borderRadius:
+                            BorderRadius.circular(Dimentions.radius15),
+                      ),
+                      padding: EdgeInsets.all(Dimentions.height10),
+                      child: Row(
+                        children: [
+                          MainTexts(
+                            displayText:
+                                '\$ ${recomendproduct.qty * product.price} | Add to Cart ',
+                            color: Colors.white54,
+                            size: Dimentions.height20,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        );
+      }),
     );
   }
 }

@@ -8,4 +8,5 @@ class AppColor {
   static const Color iconColor2 = Color(0xffe9c46a);
   static const Color iconColor3 = Color(0xfff4a261);
   static const Color dotActiveColor = Color(0xff144552);
+  static const Color notificationBg = Color(0xff3c3d3e);
 }

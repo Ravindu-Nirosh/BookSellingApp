@@ -248,13 +248,13 @@ class _BookItemsPagesState extends State<BookItemsPages> {
 
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: [
-          GestureDetector(
-            onTap: () {
-              Get.toNamed(RouteHelper.getPopulerFood(index));
-            },
-            child: Container(
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed(RouteHelper.getPopulerFood(index));
+        },
+        child: Stack(
+          children: [
+            Container(
               height: Dimentions.scrollPageImageContainer,
               margin: EdgeInsets.only(
                 left: Dimentions.width5,
@@ -272,36 +272,36 @@ class _BookItemsPagesState extends State<BookItemsPages> {
                 ),
               ),
             ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimentions.scrollPageInfoContainer,
-              margin: EdgeInsets.only(
-                left: Dimentions.width30,
-                right: Dimentions.width30,
-                bottom: Dimentions.height10,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimentions.radius20),
-                color: const Color(0xff1e2023),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black54,
-                    blurRadius: 5.0,
-                    offset: Offset(0, 5),
-                  )
-                ],
-              ),
+            Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.all(Dimentions.height15),
-                child: AppColumn(
-                  text: populerProduct.name!,
+                height: Dimentions.scrollPageInfoContainer,
+                margin: EdgeInsets.only(
+                  left: Dimentions.width30,
+                  right: Dimentions.width30,
+                  bottom: Dimentions.height10,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimentions.radius20),
+                  color: const Color(0xff1e2023),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black54,
+                      blurRadius: 5.0,
+                      offset: Offset(0, 5),
+                    )
+                  ],
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(Dimentions.height15),
+                  child: AppColumn(
+                    text: populerProduct.name!,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
